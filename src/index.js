@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Books from './pages/Books'; 
+import About from './pages/About'; 
+import DataSource from "./Source/BookSource"
+//import NewBook from "./Source/NewBook"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+<DataSource> 
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<App />} >
+
+        <Route path= '/Books' element={<Books/>} />
+        <Route path= '/Books' element={<Books/>} />
+        <Route path= '/About' element={<About/>} />
+      </Route>
+      </Routes>
+  </BrowserRouter>
+</DataSource>,
   document.getElementById('root')
 );
 
