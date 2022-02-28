@@ -1,6 +1,6 @@
 import {useContext} from "react";
-//import { Link } from "react-router-dom";
-import { DataContext } from "../Source/BookSource";
+import { Link } from "react-router-dom";
+import { DataContext } from "../providers/DataProvider";
 
 
 const Books = () =>{
@@ -8,17 +8,24 @@ const Books = () =>{
   return (
     <div>
       <h1>Books Page</h1>
-      {JSON.stringify(data)}
+      <Link to='/newBook'>Create a New Book Entry</Link>
       <hr />
       <button onClick={()=> data.setDemoState('changed in BOOKS')}>change text</button>
-    <p>{data.demoState}</p>  
-      <button onClick={()=> data.addBook({title:'Random Book Title'})}>Add Book</button>
-      <button onClick={()=> data.updateBook({title:'ABCD', author: 'Trina Nixon'})}>Update Book</button>
-      <button onClick={()=> data.deleteBook({title:'ABCD'})}>Delete Book</button>
-      <button onClick={ data.getBooks}>get Books</button>
-      {data.error && <p>{data.error}</p>}
+    
+    {data.books.map(u=>{
+    return(
+      <div key={u.title}>
+        <h1>{u.author} {u.title}</h1>
+        <button onClick={() => {data.deleteBook(u.title)}}>Delete</button>
+        <Link to={`/books/${u.title}`} state={u}>show</Link> 
     </div>
   )
+        })}
+        <button onClick={data.getBooks}>getBooks</button>
+        <hr />
+        {JSON.stringify(data)}
+        <hr />
+        </div>
+  )
 }
-
 export default Books; 

@@ -4,7 +4,7 @@ import axios from "axios";
 //create a state we can share across components
 export const DataContext = React.createContext();
 
-const DataSource = (props)=>{
+const DataProvider = (props)=>{
   const [books, setBooks] = useState([{author:"john doe", title: "Insert Book Title"}]);
   const [error, setError] = useState(null);
    const [demoState, setDemoState] = useState('hi i am demoState from the data source');
@@ -35,7 +35,7 @@ setBooks(filteredBooks)
 }
 
 
-  const dataSourceState = {
+  const dataProviderThing = {
     books:books, 
     demoState:demoState, 
     x:1, 
@@ -47,11 +47,11 @@ setBooks(filteredBooks)
     error,
  };
 return(
-  <DataContext.Source value={dataSourceState}>
+  <DataContext.Provider value={dataProviderThing}>
 
     {props.children}
-  </DataContext.Source>
+  </DataContext.Provider>
 );
 };
 
-export default DataSource;
+export default DataProvider;

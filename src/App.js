@@ -14,8 +14,8 @@ function App() {
         >
         <Link to='/Books'>Books</Link> | {' '}
         <Link to='/About'>About</Link> | {' '}
+        <Link to='/new_book'>New Book</Link>
       </nav>
-      <p>Outlet component here</p>
       <Outlet /> 
     </div>
   );

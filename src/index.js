@@ -6,22 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Books from './pages/Books'; 
 import About from './pages/About'; 
-import DataSource from "./Source/BookSource"
-//import NewBook from "./Source/NewBook"
+import Book from "./pages/Book"
+import NewBook from "./pages/NewBook"
+import DataProvider from "./providers/DataProvider"
+
 
 ReactDOM.render(
-<DataSource> 
+<DataProvider> 
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />} >
 
         <Route path= '/Books' element={<Books/>} />
-        <Route path= '/Books' element={<Books/>} />
-        <Route path= '/About' element={<About/>} />
+        <Route path= '/Books/:title' element={<Book/>} />
+        <Route path= '/NewBook' element={<NewBook/>} />
+        <Route path= '/about' element={<About/>} />
       </Route>
       </Routes>
   </BrowserRouter>
-</DataSource>,
+</DataProvider>,
   document.getElementById('root')
 );
 
